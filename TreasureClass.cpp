@@ -6,10 +6,6 @@
 #include "DBTreasureClass.h"
 #include "Random.h"
 
-/*
-* Stores a single "line" in TreasureClassEx.txt file
-* as a Treasure class class
-*/
 std::string m_treasureClass;
 int m_group;
 int m_level;
@@ -104,9 +100,11 @@ std::vector<std::string> TreasureClass::select_random_elements(const std::vector
     return elements;
 }
 
-std::vector<std::string> TreasureClass::get_loot(std::vector<std::string>& loot, const int kills)
+std::vector<std::string> TreasureClass::get_loot(const int kills)
 {
-    for (int i=0; i<kills; i++ )
+    std::vector<std::string> loot;
+
+    for (int i = 0; i < kills; i++)
     {
         //adds no drop
         no_drop();
@@ -122,10 +120,10 @@ std::vector<std::string> TreasureClass::get_loot(std::vector<std::string>& loot,
     {
         l = replace_tc_with_t(l);
     }
-    
+
 
     std::cout << m_treasureClass << " loot: [";
-    for (int i=0;i<loot.size();i++)
+    for (int i = 0; i < loot.size(); i++)
     {
         std::cout << loot[i];
         if (i != loot.size() - 1)
@@ -149,8 +147,6 @@ void TreasureClass::no_drop()
     }
 }
 
-/* Replaces Treasure Class recursively until treasure is found
-*/
 std::string TreasureClass::replace_tc_with_t(std::string& tcStr)
 {
     //std::cout << "Starting replace_tc_with_t(" << tcStr << ")" << std::endl;

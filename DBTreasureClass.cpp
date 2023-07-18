@@ -43,17 +43,10 @@ void DBTreasureClass::split(const std::string& s, char delim, std::vector<std::s
 
 TreasureClass* DBTreasureClass::getTreasureClass(const std::string treasureClass)
 {
-    auto aa = s_Instance.m_tcData.find(treasureClass);
-    if (aa == s_Instance.m_tcData.end())
-    {
-        return NULL; //Why doesn't it work?
-    }
+    if (s_Instance.m_tcData.find(treasureClass) == s_Instance.m_tcData.end())
+        return NULL;
     else
     {
-        TreasureClass *p = &s_Instance.m_tcData.at(treasureClass);
-        //TreasureClass* tcPtr = tc;
-
-        //return s_Instance.m_tcData.at(treasureClass);
-        return p;
+        return &s_Instance.m_tcData.at(treasureClass);
     }
 }

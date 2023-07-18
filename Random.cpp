@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Random.h"
 
 Random Random::s_Instance;
